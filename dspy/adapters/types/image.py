@@ -140,25 +140,6 @@ class Image(Type):
             raise ValueError(f"File not found: {file_path}")
         return cls(_encode_image_from_file(file_path))
 
-    @classmethod
-    def from_file(cls, file_path: str) -> "Image":
-        """Deprecated alias for :meth:`from_path`."""
-        warnings.warn(
-            "Image.from_file is deprecated and will be removed in 3.4; use Image.from_path instead.",
-            DeprecationWarning,
-            stacklevel=2,
-        )
-        return cls.from_path(file_path)
-
-    @classmethod
-    def from_PIL(cls, pil_image):  # noqa: N802
-        warnings.warn(
-            "Image.from_PIL is deprecated and will be removed in 3.4; use Image(pil_image) instead.",
-            DeprecationWarning,
-            stacklevel=2,
-        )
-        return cls(pil_image)
-
     def __str__(self):
         return self.serialize_model()
 

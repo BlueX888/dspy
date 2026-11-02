@@ -167,10 +167,13 @@ In DSPy 3.3, constructing or validating `Image`, `Audio`, and `File` values no l
 | `Audio(path)` | `Audio.from_path(path)` | Read and embed a local audio file |
 | `Audio(url)` | `Audio.from_url(url)` | Download and embed remote audio |
 | `File(path)` | `File.from_path(path)` | Read and embed a local file |
-| `Image.from_file(path)` | `Image.from_path(path)` | Replace the deprecated alias |
-| `Audio.from_file(path)` | `Audio.from_path(path)` | Replace the deprecated alias |
+| `Image.from_file(path)` | `Image.from_path(path)` | Replace the removed alias |
+| `Image.from_PIL(pil_image)` | `Image(pil_image)` | Replace the removed alias |
+| `Audio.from_file(path)` | `Audio.from_path(path)` | Replace the removed alias |
 
-Safe in-memory inputs such as data URIs, bytes, PIL images, audio arrays, and structured dictionaries remain supported. The deprecated direct call `Image(url, download=True)` continues to work with a warning through 3.3; `Image.from_file()`, `Image.from_PIL()`, and `Audio.from_file()` are also scheduled for removal in 3.4.
+Safe in-memory inputs such as data URIs, bytes, PIL images, audio arrays, and structured dictionaries remain supported. The deprecated direct call `Image(url, download=True)` continues to work with a warning through 3.3.
+
+`Image.from_file()`, `Image.from_PIL()`, and `Audio.from_file()` have been removed after their announced 3.4 removal deadline. Use the replacements in the table above; the old aliases are no longer callable.
 
 `Image.from_url()` and `Audio.from_url()` perform synchronous, caller-initiated HTTP requests and follow redirects. They do not validate destinations against an SSRF allowlist, so applications must validate or allowlist URLs derived from untrusted input before calling them.
 
